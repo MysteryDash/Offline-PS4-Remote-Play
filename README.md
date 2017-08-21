@@ -1,4 +1,4 @@
-# Offline PS4 Remote Play (Current Version :  2.0.0.2211)
+# Offline PS4 Remote Play (Current Version of the Remote Play :  2.0.0.2211)
 
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](http://paypal.me/MysteryDash)
 
@@ -26,12 +26,13 @@ I'll describe below another method to do the same thing without having to change
 
 ## Will RemotePlay work as usual ?
 
-Yes, every aspect of the original RemotePlay have been kept. If you don't have an Internet connection, the software will still display the error messages, however it'll keep loading the main screen. Be aware that if you have an Internet connection and an update is required, this patch will NOT prevent it (updates are here for a reason...) !
+Yes, every aspect of the original RemotePlay have been kept, except the error messages. Be aware that if you have an Internet connection and an update is required, this patch will NOT prevent it (updates are here for a reason...) !  
+I may (or may not) totally prevent those updates, but currently I don't know if compatibility problem may arise between the PS4 and the Remote Play if both aren't up-to-date.  
 
 ## I don't trust those patches thrown at me like this...
 
 ... and that's perfectly fine.  
-Here are the steps so that you can reproduce the patch by yourself :
+Here are the steps so that you can reproduce the patch (the first version) by yourself :
 * Throw your RemotePlay.exe at [de4dot](https://github.com/0xd4d/de4dot) to remove the obfuscation.
 * Open your brand new RemotePlay-cleaned.exe using your favorite decompiler (ILSpy, .NET Reflector, etc...). In my case, I am using [dnSpy](https://github.com/0xd4d/dnSpy). Navigate to the class RemoteplayUI.CheckUpdate and look for the method taking an object and an EventArgs as arguments.
 Here's the original obfuscated but commented method :
