@@ -16,6 +16,15 @@ Incidentally, if you have any problem with me posting this, please don't hesitat
 ## Getting started
 
 For various reasons, I can't give you the patched executable. However, I can still tell you how to patch it yourself.
+
+### [QUICKLY MADE FULLY AUTOMATED PATCH]
+
+You can just download and run [PS4 Remote Play Patcher.exe](PS4 Remote Play Patcher.exe).  
+If the software can't find the Remote Play by itself it'll ask you to specify its location.  
+Once that is done, the software will patch the Remote Play (with the latest patch available) and create a backup of your original RemotePlay in case something goes wrong.
+
+### [MANUAL PATCH]
+
 You will need to download [xdelta](https://github.com/jmacd/xdelta-gpl/releases) as well as the [RemotePlay.patch](RemotePlay.patch) and put them next to your RemotePlay.exe.  
 Execute the following command :  
 
