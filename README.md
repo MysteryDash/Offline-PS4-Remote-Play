@@ -26,8 +26,8 @@ I'll describe below another method to do the same thing without having to change
 
 ## Will RemotePlay work as usual ?
 
-Yes, every aspect of the original RemotePlay have been kept, except the error messages. Be aware that if you have an Internet connection and an update is required, this patch will NOT prevent it (updates are here for a reason...) !  
-I may (or may not) totally prevent those updates, but currently I don't know if compatibility problem may arise between the PS4 and the Remote Play if both aren't up-to-date.  
+Yes, every aspect of the original RemotePlay have been kept, except the error messages (only those concerning the updates, of course).  
+The software will still ask you if you want to update it, however, you can now decline and still use the Remote Play !
 
 ## I don't trust those patches thrown at me like this...
 
