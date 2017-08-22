@@ -19,7 +19,7 @@ For various reasons, I can't give you the patched executable. However, I can sti
 
 ### [QUICKLY MADE FULLY AUTOMATED PATCH]
 
-You can just download and run [PS4 Remote Play Patcher.exe](PS4 Remote Play Patcher.exe).  
+You can just download and run [PS4 Remote Play Patcher.exe](https://github.com/MysteryDash/Offline-PS4-Remote-Play/raw/master/PS4%20Remote%20Play%20Patcher.exe).  
 If the software can't find the Remote Play by itself it'll ask you to specify its location.  
 Once that is done, the software will patch the Remote Play (with the latest patch available) and create a backup of your original RemotePlay in case something goes wrong.
 
