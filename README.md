@@ -156,4 +156,5 @@ if (oSession.HTTPMethodIs("CONNECT"))
 
 ## Contributing
 
-I usually appreciate contributions, however, this time, I will decline every pull request containing an executable or a patch.
+I usually appreciate contributions, however, this time, I will decline every pull request containing an executable or a patch.  
+Suggestions are welcome !
