@@ -21,7 +21,8 @@ For various reasons, I can't give you the patched executable. However, I can sti
 
 You can just download and run [PS4 Remote Play Patcher.exe](https://github.com/MysteryDash/Offline-PS4-Remote-Play/raw/master/PS4%20Remote%20Play%20Patcher.exe).  
 If the software can't find the Remote Play by itself it'll ask you to specify its location.  
-Once that is done, the software will patch the Remote Play (with the latest patch available) and create a backup of your original RemotePlay in case something goes wrong.
+Once that is done, the software will patch the Remote Play (with the latest patch available) and create a backup of your original RemotePlay in case something goes wrong.  
+Don't forget that, to use the PS4 Remote Play, you still need a local network (connect your PS4 to your computer using an ethernet cable or a local Wi-Fi network hosted on your computer) !
 
 ### [MANUAL PATCH]
 
