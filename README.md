@@ -1,4 +1,4 @@
-# Offline PS4 Remote Play (Current Version of the Remote Play :  2.0.0.2211)
+# Offline PS4 Remote Play (Current Version of the Remote Play :  2.5.0.9220)
 
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](http://paypal.me/MysteryDash)
 
