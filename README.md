@@ -15,7 +15,10 @@ Incidentally, if you have any problem with me posting this, please don't hesitat
 
 ## Supported versions of the Remote Play
 
-
+- 1.0.0.15181 - Hash : 694659629815D82CDCD62A95FA771237
+- 1.5.0.8251 - Hash : 53DF9F442EEC309D95BE88D28CC21E18
+- 2.0.0.2211 - Hash : FCD0DD66996B399F6A1A9A254F7E85B3
+- 2.6.0.2270 - Hash : 2E4C4CA5ECFD3138CB734ED603958A1A
 
 ## Getting started
 

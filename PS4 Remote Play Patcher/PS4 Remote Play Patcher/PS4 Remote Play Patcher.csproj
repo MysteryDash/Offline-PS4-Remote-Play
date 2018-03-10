@@ -39,10 +39,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Dash">
-      <HintPath>..\..\..\Libraries\Dash.NET\Dash\bin\Release\net47\Dash.dll</HintPath>
+      <HintPath>..\Libs\Dash.dll</HintPath>
     </Reference>
     <Reference Include="Dash.Windows">
-      <HintPath>..\..\..\Libraries\Dash.NET\Dash.Windows\bin\Release\Dash.Windows.dll</HintPath>
+      <HintPath>..\Libs\Dash.Windows.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
       <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
