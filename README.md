@@ -1,4 +1,4 @@
-# Offline PS4 Remote Play (Current Version of the Remote Play :  2.5.0.9220)
+# Offline PS4 Remote Play
 
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](http://paypal.me/MysteryDash)
 
@@ -9,34 +9,38 @@ Here's the solution !
 
 Hello Sony,  
 If you ever happen to read this, don't you think it would be nice to have this feature built-in ?  
-Think about it like this for a second : you are going on holiday with your PS4 and your laptop because you have no other display available for it. Most laptops aren't shipped with an HDMI input port so you can't directly connect your PS4 to your laptop's screen. However, what you can do is connect your laptop and your PS4 with an ethernet cable and use RemotePlay... until you realize that you need an Internet connection to start the software.  
+Think about it like this for a second : you are going on holiday with your PS4 and your laptop because you have no other display available for it. Most laptops aren't shipped with an HDMI input port so you can't directly connect your PS4 to your laptop's screen. However, what you can do is connect your laptop and your PS4 with an ethernet cable and use Remote Play... until you realize that you need an Internet connection to start the software.  
 Looking for updates is nice, but is there really a point in preventing players from using their console because they don't have an Internet connection available all the time ?  
 Incidentally, if you have any problem with me posting this, please don't hesitate to contact me.
+
+## Supported versions of the Remote Play
+
+
 
 ## Getting started
 
 For various reasons, I can't give you the patched executable. However, I can still tell you how to patch it yourself.
 
-### [QUICKLY MADE FULLY AUTOMATED PATCH]
+### [FULLY AUTOMATED PATCHER]
 
-You can just download and run [PS4 Remote Play Patcher.exe](https://github.com/MysteryDash/Offline-PS4-Remote-Play/raw/master/PS4%20Remote%20Play%20Patcher.exe).  
+You can just download and run the latest version of the [PS4 Remote Play Patcher](https://github.com/MysteryDash/Offline-PS4-Remote-Play/releases/latest).  
 If the software can't find the Remote Play by itself it'll ask you to specify its location.  
-Once that is done, the software will patch the Remote Play (with the latest patch available) and create a backup of your original RemotePlay in case something goes wrong.  
+Once that is done, the software will patch the Remote Play (with the latest patch available) and create a backup of your original Remote Play if you want.  
 Don't forget that, to use the PS4 Remote Play, you still need a local network (connect your PS4 to your computer using an ethernet cable or a local Wi-Fi network hosted on your computer) !
 
 ### [MANUAL PATCH]
 
-You will need to download [xdelta](https://github.com/jmacd/xdelta-gpl/releases) as well as the [RemotePlay.patch](RemotePlay.patch) and put them next to your RemotePlay.exe.  
-Execute the following command :  
+You will need to download [BsPatch](BsPatch) and the [Patches.zip](Patches.zip) file. 
+Extract the patch of your choice and execute the following command :  
 
-        xdelta -d -s RemotePlay.exe RemotePlay.patch RemotePlay-Patched.exe
+        bsdiff RemotePlay.exe RemotePlay-Patched.exe mypatch
 		
 Then you have to start RemotePlay-Patched.exe to enjoy your PS4 Remote Play offline experience.
 I'll describe below another method to do the same thing without having to change RemotePlay.exe itself.
 
-## Will RemotePlay work as usual ?
+## Will Remote Play work as usual ?
 
-Yes, every aspect of the original RemotePlay have been kept, except the error messages (only those concerning the updates, of course).  
+Yes, every aspect of the original Remote Play have been kept, except the error messages (only those concerning the updates, of course).  
 The software will still ask you if you want to update it, however, you can now decline and still use the Remote Play !
 
 ## I don't trust those patches thrown at me like this...
@@ -128,13 +132,13 @@ private void webClient_0_DownloadFileCompleted(object sender, AsyncCompletedEven
 	this.bool_1 = true;
 }
 ```
-* And that's it, you can now export your brand new RemotePlay executable (using the Save Module... function on dnSpy) and enjoy playing on your PS4 anywhere.
+* And that's it, you can now export your brand new Remote Play executable (using the Save Module... function on dnSpy) and enjoy playing on your PS4 anywhere.
 
 ## Alternative method, almost 0 programming skill required.
 
 1. Download and install [Fiddler](http://www.telerik.com/fiddler).
 2. [Enable HTTPS decryption in Fiddler](https://www.fiddlerbook.com/fiddler/help/httpsdecryption.asp).
-3. With Fiddler running, start RemotePlay and wait for the request to https://remoteplay.dl.playstation.net/remoteplay/module/win/rp-version-win.json.
+3. With Fiddler running, start Remote Play and wait for the request to https://remoteplay.dl.playstation.net/remoteplay/module/win/rp-version-win.json.
 4. Select the AutoResponder tab, enable the rules, enable unmatched requests passthrough.
 5. Drag & Drop the request made to remoteplay.dl.playstation.net into the rules list.
 6. Select the FiddlerScript tab and look for this line :
@@ -151,8 +155,8 @@ if (oSession.HTTPMethodIs("CONNECT"))
 ```
 8. Click on Save Script.
 9. That's it for Fiddler. You have nothing to save by yourself. The only thing that matters now is that Fiddler must be up and running when you want to play without Internet.
-10. There's still something to do. Currently, if you open RemotePlay, it'll tell you that (if you are truly disconnected) there is not network connection available. To fix this, create an access point on your phone and connect to it (there's no need to have an Internet connection available on your phone, otherwise it would defeat the point of having done everything mentionned above). Note that you can also use any free hotspot you may have around you.
-11. It's already done ! When you'll start RemotePlay, it'll think that an Internet connection is available (when it's merely connected to a hotspot WITHOUT Internet) and when it'll try to look for updates Fiddler will take care of it.
+10. There's still something to do. Currently, if you open Remote Play, it'll tell you that (if you are truly disconnected) there is not network connection available. To fix this, create an access point on your phone and connect to it (there's no need to have an Internet connection available on your phone, otherwise it would defeat the point of having done everything mentionned above). Note that you can also use any free hotspot you may have around you.
+11. It's already done ! When you'll start Remote Play, it'll think that an Internet connection is available (when it's merely connected to a hotspot WITHOUT Internet) and when it'll try to look for updates Fiddler will take care of it.
 12. Enjoy the offline PS4 Remote Play.
 
 ## Contributing
