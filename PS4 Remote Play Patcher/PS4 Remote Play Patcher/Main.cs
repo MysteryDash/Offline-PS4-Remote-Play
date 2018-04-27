@@ -28,6 +28,9 @@ namespace Dash.RemotePlayPatcher
         public Main()
         {
             InitializeComponent();
+
+            ServicePointManager.Expect100Continue = true;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
         }
 
         private async void Main_Load(object sender, System.EventArgs e)
