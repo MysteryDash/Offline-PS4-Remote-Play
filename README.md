@@ -1,19 +1,19 @@
 # Offline PS4 Remote Play
 
-Ever wanted to use your PS4 on your local network but couldn't because you didn't have an Internet connection available ?  
-Here's the solution !
+Ever wanted to use your PS4 on your local network but couldn't because you didn't have an Internet connection available?  
+Here's the solution!
 
 ## Before we get started, a little message for Sony
 
 Hello Sony,  
-If you ever happen to read this, don't you think it would be nice to have this feature built-in ?  
-Think about it like this for a second : you are going on holiday with your PS4 and your laptop because you have no other display available for it. Most laptops aren't shipped with an HDMI input port so you can't directly connect your PS4 to your laptop's screen. However, what you can do is connect your laptop and your PS4 with an ethernet cable and use Remote Play... until you realize that you need an Internet connection to start the software.  
-Looking for updates is nice, but is there really a point in preventing players from using their console because they don't have an Internet connection available all the time ?  
+If you ever happen to read this, don't you think it would be nice to have this feature built-in?  
+Think about it like this for a second: you are going on holiday with your PS4 and your laptop because you have no other display available for it. Most laptops aren't shipped with an HDMI input port so you can't directly connect your PS4 to your laptop's screen. However, what you can do is connect your laptop and your PS4 with an ethernet cable and use Remote Play... until you realize that you need an Internet connection to start the software.  
+Looking for updates is nice, but is there really a point in preventing players from using their console because they don't have an Internet connection available all the time?  
 Incidentally, if you have any problem with me posting this, please don't hesitate to contact me.
 
 ## Supported versions of the Remote Play
 
-You can find older versions of the Remote Play on the Internet Archive: Wayback Machine !
+You can find older versions of the Remote Play on the Internet Archive: Wayback Machine!
 - 1.0.0.15181 - Hash : 694659629815D82CDCD62A95FA771237
 - 1.5.0.8251 - Hash : 53DF9F442EEC309D95BE88D28CC21E18
 - 2.0.0.2211 - Hash : FCD0DD66996B399F6A1A9A254F7E85B3
@@ -29,7 +29,7 @@ For various reasons, I can't give you the patched executable. However, I can sti
 You can just download and run the latest version of the [PS4 Remote Play Patcher](https://github.com/MysteryDash/Offline-PS4-Remote-Play/releases/latest).  
 If the software can't find the Remote Play by itself it'll ask you to specify its location.  
 Once that is done, the software will patch the Remote Play (with the latest patch available) and create a backup of your original Remote Play if you want.  
-Don't forget that, to use the PS4 Remote Play, you still need a local network (connect your PS4 to your computer using an ethernet cable or a local Wi-Fi network hosted on your computer) !
+Don't forget that, to use the PS4 Remote Play, you still need a local network (connect your PS4 to your computer using an ethernet cable or a local Wi-Fi network hosted on your computer)!
 
 ### [MANUAL PATCH]
 
@@ -41,14 +41,14 @@ Extract the patch of your choice and execute the following command :
 Then you have to start RemotePlay-Patched.exe to enjoy your PS4 Remote Play offline experience.
 I'll describe below another method to do the same thing without having to change RemotePlay.exe itself.
 
-## Will Remote Play work as usual ?
+## Will Remote Play work as usual?
 
 Yes, every aspect of the original Remote Play have been kept, except for the updates window, which will not even appear with the latest version of the patch.
 
 ## I don't trust those patches thrown at me like this...
 
 ... and that's perfectly fine.  
-Here are the steps so that you can reproduce the patch (the first version) by yourself :
+Here are the steps so that you can reproduce the patch (the first version) by yourself:
 * Throw your RemotePlay.exe at [de4dot](https://github.com/0xd4d/de4dot) to remove the obfuscation.
 * Open your brand new RemotePlay-cleaned.exe using your favorite decompiler (ILSpy, .NET Reflector, etc...). In my case, I am using [dnSpy](https://github.com/0xd4d/dnSpy). Navigate to the class RemoteplayUI.CheckUpdate and look for the properties NeedUpdate and CancelRequest. Force them to return false.
 * There's a second edit to do. Look this time for the class called Class2 (this class is not in a namespace).
@@ -65,7 +65,7 @@ If you wonder why we aren't just removing ShowDialog and setting the two assignm
 3. b. You might also see a request to https://remoteplay.dl.playstation.net/remoteplay/module/pplist_v2.json, handle it the same way as the previous one.
 4. Select the AutoResponder tab, enable the rules, enable unmatched requests passthrough.
 5. Drag & Drop the request made to remoteplay.dl.playstation.net into the rules list.
-6. Select the FiddlerScript tab and look for this line :
+6. Select the FiddlerScript tab and look for this line:
 ```csharp
 static function OnBeforeRequest(oSession: Session) {
 ```
@@ -86,4 +86,4 @@ if (oSession.HTTPMethodIs("CONNECT"))
 ## Contributing
 
 I usually appreciate contributions, however, this time, I will decline every pull request containing an executable or a patch.  
-Suggestions are welcome !
+Suggestions are welcome!
