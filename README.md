@@ -1,7 +1,5 @@
 # Offline PS4 Remote Play
 
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](http://paypal.me/MysteryDash)
-
 Ever wanted to use your PS4 on your local network but couldn't because you didn't have an Internet connection available ?  
 Here's the solution !
 
@@ -19,6 +17,7 @@ Incidentally, if you have any problem with me posting this, please don't hesitat
 - 1.5.0.8251 - Hash : 53DF9F442EEC309D95BE88D28CC21E18
 - 2.0.0.2211 - Hash : FCD0DD66996B399F6A1A9A254F7E85B3
 - 2.6.0.2270 - Hash : 2E4C4CA5ECFD3138CB734ED603958A1A
+- 2.7.0.7270 - Hash : 9961E4475745881FAC537D58B1BCD5FB (seems to work without even logging to the Playstation Network)
 
 ## Getting started
 
@@ -43,105 +42,26 @@ I'll describe below another method to do the same thing without having to change
 
 ## Will Remote Play work as usual ?
 
-Yes, every aspect of the original Remote Play have been kept, except the error messages (only those concerning the updates, of course).  
-The software will still ask you if you want to update it, however, you can now decline and still use the Remote Play !
+Yes, every aspect of the original Remote Play have been kept, except for the updates window, which will not even appear with the latest version of the patch.
 
 ## I don't trust those patches thrown at me like this...
 
 ... and that's perfectly fine.  
 Here are the steps so that you can reproduce the patch (the first version) by yourself :
 * Throw your RemotePlay.exe at [de4dot](https://github.com/0xd4d/de4dot) to remove the obfuscation.
-* Open your brand new RemotePlay-cleaned.exe using your favorite decompiler (ILSpy, .NET Reflector, etc...). In my case, I am using [dnSpy](https://github.com/0xd4d/dnSpy). Navigate to the class RemoteplayUI.CheckUpdate and look for the method taking an object and an EventArgs as arguments.
-Here's the original obfuscated but commented method :
-```csharp
-private void \uE000(object \uE00F, EventArgs \uE010)
-{
-	this.\uE005 = new Timer();
-	this.\uE005.Interval = \uE005.\uE000(19);
-	this.\uE005.Tick += new EventHandler(this.\uE002);
-	this.\uE005.Start();
-	if (!NetworkInterface.GetIsNetworkAvailable())
-	{
-		NormalMessage normalMessage = new NormalMessage(RpUIres.\uE03A, (MESSAGE_DIALOG_SHOW_TYPE)\uE005.\uE000(0));
-		normalMessage.ShowDialog();
-		normalMessage.Dispose();
-		// Those three lines below are the lines we want to get rid of.
-		// Removing the whole if statement works fine too, but you will not have the error message anymore.
-		this.\uE00A = (\uE005.\uE000(2) != 0);
-		base.Close();
-		return;
-	}
-	this.\uE000();
-}
-```
-And here's the unobfuscated edited method :
-```csharp
-private void CheckUpdate_Shown(object sender, EventArgs e)
-{
-	this.timer_0 = new Timer();
-	this.timer_0.Interval = Class8.smethod_0(19);
-	this.timer_0.Tick += new EventHandler(this.timer_0_Tick);
-	this.timer_0.Start();
-	if (!NetworkInterface.GetIsNetworkAvailable())
-	{
-		NormalMessage expr_56 = new NormalMessage(RpUIres.String_58, (MESSAGE_DIALOG_SHOW_TYPE)Class8.smethod_0(0));
-		expr_56.ShowDialog();
-		expr_56.Dispose();
-	}
-	this.method_0();
-}
-```
-* There's a second edit to do. Look this time for the method taking an object and an AsyncCompletedEventArgs as arguments.
-Here's the original (shortened a bit) obfuscated but commented method :
-```csharp
-private void \uE000(object \uE019, AsyncCompletedEventArgs \uE01A)
-{
-	if (\uE01A.Cancelled)
-	{
-		this.\uE00A = (\uE005.\uE000(2) != 0);
-	}
-	else if (\uE01A.Error != null)
-	{
-		NormalMessage normalMessage = new NormalMessage(RpUIres.\uE039, (MESSAGE_DIALOG_SHOW_TYPE)\uE005.\uE000(0));
-		normalMessage.ShowDialog();
-		normalMessage.Dispose();
-		this.\uE00A = (\uE005.\uE000(2) != 0); // We want to remove this.
-	}
-	else
-	{
-		// Deserialization stuff no one cares about
-	}
-	this.\uE007 = (\uE005.\uE000(2) != 0); // We want this to be always true}
-}
-```
-And here is the unobfuscated edited method (still shortened) :
-```csharp
-private void webClient_0_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
-{
-	if (e.Cancelled)
-	{
-		this.bool_3 = (Class8.smethod_0(2) != 0);
-	}
-	else if (e.Error != null)
-	{
-		NormalMessage expr_34 = new NormalMessage(RpUIres.String_57, (MESSAGE_DIALOG_SHOW_TYPE)Class8.smethod_0(0));
-		expr_34.ShowDialog();
-		expr_34.Dispose();
-	}
-	else
-	{	
-	    // Deserialization stuff no one cares about
-	}
-	this.bool_1 = true;
-}
-```
+* Open your brand new RemotePlay-cleaned.exe using your favorite decompiler (ILSpy, .NET Reflector, etc...). In my case, I am using [dnSpy](https://github.com/0xd4d/dnSpy). Navigate to the class RemoteplayUI.CheckUpdate and look for the properties NeedUpdate and CancelRequest. Force them to return false.
+* There's a second edit to do. Look this time for the class called Class2 (this class is not in a namespace).
+* In the Main method, get rid of ```checkUpdate.ShowDialog();```.
 * And that's it, you can now export your brand new Remote Play executable (using the Save Module... function on dnSpy) and enjoy playing on your PS4 anywhere.
+
+If you wonder why we aren't just removing ShowDialog and setting the two assignments under to false directly, that's because it triggers my antivirus for some reason.
 
 ## Alternative method, almost 0 programming skill required.
 
 1. Download and install [Fiddler](http://www.telerik.com/fiddler).
 2. [Enable HTTPS decryption in Fiddler](https://www.fiddlerbook.com/fiddler/help/httpsdecryption.asp).
-3. With Fiddler running, start Remote Play and wait for the request to https://remoteplay.dl.playstation.net/remoteplay/module/win/rp-version-win.json.
+3. a. With Fiddler running, start Remote Play and wait for the request to https://remoteplay.dl.playstation.net/remoteplay/module/win/rp-version-win.json.
+3. b. You might also see a request to https://remoteplay.dl.playstation.net/remoteplay/module/pplist_v2.json, handle it the same way as the previous one.
 4. Select the AutoResponder tab, enable the rules, enable unmatched requests passthrough.
 5. Drag & Drop the request made to remoteplay.dl.playstation.net into the rules list.
 6. Select the FiddlerScript tab and look for this line :
@@ -159,7 +79,7 @@ if (oSession.HTTPMethodIs("CONNECT"))
 8. Click on Save Script.
 9. That's it for Fiddler. You have nothing to save by yourself. The only thing that matters now is that Fiddler must be up and running when you want to play without Internet.
 10. There's still something to do. Currently, if you open Remote Play, it'll tell you that (if you are truly disconnected) there is not network connection available. To fix this, create an access point on your phone and connect to it (there's no need to have an Internet connection available on your phone, otherwise it would defeat the point of having done everything mentionned above). Note that you can also use any free hotspot you may have around you.
-11. It's already done ! When you'll start Remote Play, it'll think that an Internet connection is available (when it's merely connected to a hotspot WITHOUT Internet) and when it'll try to look for updates Fiddler will take care of it.
+11. It's already done ! When you'll start the Remote Play, it'll think that an Internet connection is available (when it's merely connected to a hotspot WITHOUT Internet) and when it'll try to look for updates Fiddler will take care of it.
 12. Enjoy the offline PS4 Remote Play.
 
 ## Contributing
