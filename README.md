@@ -19,10 +19,16 @@ You can find older versions of the Remote Play on the Internet Archive: Wayback 
 - 2.0.0.2211 - Hash : FCD0DD66996B399F6A1A9A254F7E85B3
 - 2.6.0.2270 - Hash : 2E4C4CA5ECFD3138CB734ED603958A1A
 - 2.7.0.7270 - Hash : 9961E4475745881FAC537D58B1BCD5FB (seems to work without even logging to the Playstation Network)
+- Any with the new PS4 Remote Play Auto-Patcher!
 
 ## Getting started
 
 For various reasons, I can't give you the patched executable. However, I can still tell you how to patch it yourself.
+
+### [EVEN BETTER FULLY AUTOMATED PATCHER]
+
+You can just download and run the latest version of the [PS4 Remote Play Auto-Patcher](https://github.com/MysteryDash/Offline-PS4-Remote-Play/releases/latest).  
+Compared to the other patcher, this one doesn't need a list of patches, it will patch the assembly by itself, so it should, _in theory_, be compatible with any version of the RemotePlay.
 
 ### [FULLY AUTOMATED PATCHER]
 
@@ -50,8 +56,7 @@ Yes, every aspect of the original Remote Play have been kept, except for the upd
 ... and that's perfectly fine.  
 Here are the steps so that you can reproduce the patch (the first version) by yourself:
 * Throw your RemotePlay.exe at [de4dot](https://github.com/0xd4d/de4dot) to remove the obfuscation.
-* Open your brand new RemotePlay-cleaned.exe using your favorite decompiler (ILSpy, .NET Reflector, etc...). In my case, I am using [dnSpy](https://github.com/0xd4d/dnSpy). Navigate to the class RemoteplayUI.CheckUpdate and look for the properties NeedUpdate and CancelRequest. Force them to return false.
-* There's a second edit to do. Look this time for the class called Class2 (this class is not in a namespace).
+* Open your brand new RemotePlay-cleaned.exe using your favorite decompiler (ILSpy, .NET Reflector, etc...). In my case, I am using [dnSpy](https://github.com/0xd4d/dnSpy). Navigate to the class containing the entry point of the program (this class is not in a namespace).
 * In the Main method, get rid of ```checkUpdate.ShowDialog();```.
 * And that's it, you can now export your brand new Remote Play executable (using the Save Module... function on dnSpy) and enjoy playing on your PS4 anywhere.
 
