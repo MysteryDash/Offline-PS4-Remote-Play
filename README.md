@@ -32,7 +32,7 @@ Compared to the other patcher, this one doesn't need a list of patches, it will 
 
 ### [FULLY AUTOMATED PATCHER]
 
-You can just download and run the latest version of the [PS4 Remote Play Patcher](https://github.com/MysteryDash/Offline-PS4-Remote-Play/releases/latest).  
+You can just download and run the latest version of the [PS4 Remote Play Patcher](https://github.com/MysteryDash/Offline-PS4-Remote-Play/releases/tag/v2.0.1).  
 If the software can't find the Remote Play by itself it'll ask you to specify its location.  
 Once that is done, the software will patch the Remote Play (with the latest patch available) and create a backup of your original Remote Play if you want.  
 Don't forget that, to use the PS4 Remote Play, you still need a local network (connect your PS4 to your computer using an ethernet cable or a local Wi-Fi network hosted on your computer)!
